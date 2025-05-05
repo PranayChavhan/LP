@@ -150,3 +150,9 @@ int main()
 
     return 0;
 }
+
+
+
+// Commands to run
+// nvcc Assignment4.cu -o output
+// ./output
