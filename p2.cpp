@@ -118,3 +118,28 @@ int main() {
 
     return 0;
 }
+
+
+// This C++ program demonstrates and compares **sequential 
+// and parallel implementations of Bubble Sort and Merge Sort** using 
+// OpenMP for parallelization and `<chrono>` for performance measurement.
+//  First, a randomly generated array is created and duplicated for each 
+// algorithm to ensure fair timing. In **sequential Bubble Sort**, adjacent 
+// elements are repeatedly compared and swapped, pushing larger values to the 
+// end in each pass; this algorithm is inherently inefficient for large datasets 
+// due to its O(n²) time complexity. In **parallel Bubble Sort**, the odd-even 
+// transposition sort strategy is applied—on even iterations, elements at even 
+// indices are compared and swapped with the next one; on odd iterations, the 
+// odd-indexed pairs are compared. These operations are parallelized with `#pragma omp parallel for`, 
+// allowing multiple comparisons and swaps in the same pass, though correctness still
+//  requires sequential alternation between even and odd phases, limiting overall 
+// parallel benefit. **Merge Sort**, a divide-and-conquer algorithm with O(n log n) complexity, i
+// s implemented both sequentially and in parallel. In the sequential version, the array 
+// is recursively divided and merged. The **parallel Merge Sort** uses 
+// OpenMP's `#pragma omp parallel sections` to concurrently sort the left and 
+// right halves of the array in different threads, offering significant speedup 
+// for large datasets, especially on multi-core CPUs. Finally, execution times for 
+// all four sorting strategies are measured using nanosecond precision to compare the 
+// efficiency of sequential vs. parallel implementations, highlighting the performance 
+// gains and limitations of parallelism depending on the algorithm's nature.
+

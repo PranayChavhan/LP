@@ -156,3 +156,20 @@ int main()
 // Commands to run
 // nvcc Assignment4.cu -o output
 // ./output
+
+
+
+// This CUDA C++ program benchmarks parallel (GPU) vs. sequential (CPU) 
+// computation for two fundamental tasks: vector addition and matrix multiplication. 
+// It first allocates large arrays—~16 million elements for vectors and 1024×1024 matrices—using dynamic memory. 
+// In the vector addition section, it performs element-wise addition of vectors a and b to get c, 
+// first using a CPU function and then a CUDA kernel. The GPU kernel calculates the global thread 
+// index and performs the addition only if the index is within bounds. CUDA memory allocation (cudaMalloc) 
+// and data transfers (cudaMemcpy) are used to move data between host (CPU) and device (GPU). For matrix multiplication, 
+// it computes each cell of the output matrix c as the dot product of the corresponding row and column 
+// from input matrices a and b. The GPU kernel leverages 2D thread and block indexing to handle rows 
+// and columns, significantly accelerating the operation by exploiting massive parallelism. 
+// High-resolution timers measure execution times, highlighting how GPU computation—despite overhead 
+// from memory transfers—can outperform the CPU, especially for compute-heavy tasks like matrix multiplication. 
+// Finally, all dynamically allocated memory is cleaned up to prevent leaks. The code effectively demonstrates 
+// how CUDA can accelerate numerical tasks by parallelizing them across hundreds or thousands of threads.
